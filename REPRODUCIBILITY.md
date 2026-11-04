@@ -15,7 +15,7 @@
 
 ## What this release verifies
 - This package includes the saved development and 2026 holdout outputs plus the latest manuscript.
-- Existing 62 unit tests passed in the packaging environment. A separate full re-run of all historical fits was completed on the user's laptop and the archived outputs have been consistency-checked in prior work; the release package itself is not a fresh third-party replication.
+- Existing 62 unit tests passed in the packaging environment. A separate full rerun of all historical fits was completed in the original research environment and the archived outputs have been consistency-checked in prior work; the release package itself is not a fresh third-party replication.
 - This version was prepared with source integrity manifest SHA-256 hashes. These hashes document this package, not a signed external attestation.
 
 ## Build environment
