@@ -1,8 +1,8 @@
 ---
 title: 'Beyond Gaussian Risk: Heavy-Tailed Volatility Models and Monte Carlo Tail-Risk Simulation in Bitcoin'
-subtitle: 'STOCHASTIC LAB — Audited Research Manuscript V1.1.5'
+subtitle: 'STOCHASTIC LAB — Research Manuscript V1.1.5'
 date: 'November 2026 · revised after 2026 chronological holdout'
-author: 'Independent Quantitative Research · Author attribution to be confirmed'
+author: 'Jude Kriel Ramcharitar'
 geometry: margin=0.85in
 fontsize: 10pt
 linestretch: 1.15
@@ -223,4 +223,4 @@ For the corrected rolling comparison, use the V1.1.3 runner with historical inpu
 | Inference | Paired block intervals for 3, 7, 14, 30, 60-day block lengths | Exploratory dependence sensitivity; not fully confirmatory |
 | Independent source & environment | Independent exchange data, pinned environment, separate-machine complete reproduction | Outstanding |
 
-The explicit distinction between **saved-output checks**, **local reruns**, and **independent external replication** is deliberate. A checkbox of unfinished tasks has been removed from the manuscript; the remaining uncertainties are described as methodological limits rather than hidden.
+The audit results above describe which checks were completed and which forms of independent validation remain outstanding.
