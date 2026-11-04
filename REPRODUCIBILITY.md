@@ -7,7 +7,7 @@
 - Avoid mixing experimental horizons: five-minute joint VaR/ES comparisons and a separately calibrated one-day MC distribution test.
 
 ## Model comparisons
-- Development: 2022–2025, 60/120/240 *observed trading-day* windows, 90-day refit cadence, 102 fitted models in total, all saved with convergence flag true.
+- Development: 2022–2025 (use `--end-year 2025` to exclude subsequent data), 60/120/240 *observed trading-day* windows, 90-day refit cadence, 102 fitted models in total, all saved with convergence flag true.
 - Primary chronological evaluation: Jan–Oct 2026, 120-day training, 90-day refits, 304 days and 87,552 common observations per specification.
 - Corrected model fit uses a constrained multistart optimization procedure; check `validation/robust_optimizer.py`. Student-t degrees of freedom are fitted after Gaussian QMLE volatility fitting, **not** by fully joint Student-t MLE.
 - Selected score differences and block-bootstrap intervals are descriptive evidence from this protocol; not proof of universal superiority.
