@@ -1,0 +1,133 @@
+{
+  "source": "BINANCE HISTORICAL SPOT CSV ZIP ARCHIVES",
+  "days": 16,
+  "days_train": 11,
+  "days_test": 5,
+  "returns_train": 3160,
+  "returns_test": 1438,
+  "start_utc": "2026-09-03 00:00:00+00:00",
+  "end_utc": "2026-11-01 23:59:00+00:00",
+  "observed_minutes": 23040,
+  "mixture_fit": {
+    "mu": -1.757869691475641e-05,
+    "sigma_calm": 0.0006988358361274326,
+    "sigma_jump": 0.002105752677068567,
+    "jump_prob": 0.2454039665001374,
+    "optimizer_success": true
+  },
+  "garch_fit": {
+    "mu": -2.2892678704831247e-06,
+    "scale": 0.0012070311863113833,
+    "alpha": 0.1703368864406407,
+    "beta": 0.7723068532404794,
+    "omega": 0.05735626031887986,
+    "optimizer_success": true
+  },
+  "archives": [
+    {
+      "archive": "BTCUSDT-trades-2026-09-03.zip",
+      "minutes": 1440,
+      "first": "2026-09-03 00:00:00+00:00",
+      "last": "2026-09-03 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-09-10.zip",
+      "minutes": 1440,
+      "first": "2026-09-10 00:00:00+00:00",
+      "last": "2026-09-10 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-09-17.zip",
+      "minutes": 1440,
+      "first": "2026-09-17 00:00:00+00:00",
+      "last": "2026-09-17 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-09-24.zip",
+      "minutes": 1440,
+      "first": "2026-09-24 00:00:00+00:00",
+      "last": "2026-09-24 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-09-30.zip",
+      "minutes": 1440,
+      "first": "2026-09-30 00:00:00+00:00",
+      "last": "2026-09-30 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-01.zip",
+      "minutes": 1440,
+      "first": "2026-10-01 00:00:00+00:00",
+      "last": "2026-10-01 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-08.zip",
+      "minutes": 1440,
+      "first": "2026-10-08 00:00:00+00:00",
+      "last": "2026-10-08 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-15.zip",
+      "minutes": 1440,
+      "first": "2026-10-15 00:00:00+00:00",
+      "last": "2026-10-15 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-22.zip",
+      "minutes": 1440,
+      "first": "2026-10-22 00:00:00+00:00",
+      "last": "2026-10-22 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-23.zip",
+      "minutes": 1440,
+      "first": "2026-10-23 00:00:00+00:00",
+      "last": "2026-10-23 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-24.zip",
+      "minutes": 1440,
+      "first": "2026-10-24 00:00:00+00:00",
+      "last": "2026-10-24 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-25.zip",
+      "minutes": 1440,
+      "first": "2026-10-25 00:00:00+00:00",
+      "last": "2026-10-25 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-26.zip",
+      "minutes": 1440,
+      "first": "2026-10-26 00:00:00+00:00",
+      "last": "2026-10-26 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-27.zip",
+      "minutes": 1440,
+      "first": "2026-10-27 00:00:00+00:00",
+      "last": "2026-10-27 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-10-29.zip",
+      "minutes": 1440,
+      "first": "2026-10-29 00:00:00+00:00",
+      "last": "2026-10-29 23:59:00+00:00"
+    },
+    {
+      "archive": "BTCUSDT-trades-2026-11-01.zip",
+      "minutes": 1440,
+      "first": "2026-11-01 00:00:00+00:00",
+      "last": "2026-11-01 23:59:00+00:00"
+    }
+  ],
+  "caveats": [
+    "Nonconsecutive days are not bridged for returns",
+    "Five-minute returns are formed from populated close-minute prices",
+    "Model fit is TRAIN ONLY; holdout days never used for parameter fitting",
+    "Coverage test assumptions require caution due to temporal dependence",
+    "Simulation is not a trading strategy, causal attribution or forward guarantee",
+    "Mixture wide component is not proof of causal price jumps",
+    "Multiple model comparison and single holdout add selection uncertainty"
+  ]
+}

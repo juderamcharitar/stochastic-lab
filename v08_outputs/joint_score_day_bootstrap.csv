@@ -1,0 +1,4 @@
+other_model,mean_score_advantage_student_t,bootstrap_ci_low,bootstrap_ci_high,resampling_unit
+Empirical,0.41729579208827344,0.3820326366556515,0.4605677800225626,UTC calendar day
+GARCH Gaussian,0.08276868005030859,0.07460113024378394,0.09143708769322681,UTC calendar day
+Gaussian IID,0.5861648487805746,0.5175824320865033,0.6628442552780065,UTC calendar day

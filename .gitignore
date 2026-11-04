@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+*.key
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+.DS_Store
+data/
+monthly_5m/
+clean_outputs/
+holdout_2026_frozen/
+*.tmp

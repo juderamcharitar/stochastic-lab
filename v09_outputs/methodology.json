@@ -1,0 +1,14 @@
+{
+  "source": "btc_5m_returns.csv",
+  "requested_training_days": [
+    60,
+    120
+  ],
+  "refit_observed_days": 90,
+  "maximum_training_observations_per_fit": 40000,
+  "sampling": "Last N chronological returns within historical training window; actual n_fit recorded. Use max-fit-obs >= train_days * 288 to avoid truncating the specified window.",
+  "execution": "Forecast variance resets at each date and each missing interval; each forecast at t uses only returns strictly before t within current run.",
+  "innovations": "Gaussian QMLE for variance parameters, then two-stage standardized Student-t df fit. Not joint maximum likelihood.",
+  "scoring": "Joint VaR/ES score only if predicted ES > 0. Paired moving-block bootstrap (default 7 observed days), exploratory; no formal guarantee under long-run dependence.",
+  "limits": "Model-selection bias, tick data issues and intraday seasonality not eliminated. Sparse series segments are reset. This is risk forecasting, not trading profitability."
+}

@@ -1,0 +1,24 @@
+{
+  "source_path": "C:\\Users\\jkram\\Downloads\\Stochastic_Lab_V0_7_1_Gap_Safe\\v07_outputs\\btc_5m_returns.csv",
+  "source_sha256": "66e7a9d11f75a9f1aa11cff078a5a7716eaebad89b8b6291f0aa21f301ac1a0c",
+  "refit_days": 90,
+  "start_year": 2026,
+  "windows": [
+    120
+  ],
+  "fit_engine": "robust_optimizer.repair SLSQP constrained multistart",
+  "code_sha256": {
+    "runner": "3c86ed9923ecdd6dd6d2bce8843adb134d5a600b6c7689f606357e8b3c598a76",
+    "repair": "107cf3500986815be1c624be1da5bf99a570981071931f28936d5c723a749e7c",
+    "original": "6ad04afeadbcb2b62e26b64e090786f76e59a58dfd4b253c45e1ce9f58ed8a25"
+  },
+  "status": {
+    "120": {
+      "fits": 8,
+      "daily_rows": 608,
+      "converged": 8,
+      "daily_sha256": "c57bf9fb01d8210d95a9742b682340c20095183aa01cbb2487f58490614b8522",
+      "fit_sha256": "f5b97df60d4bfb17af06f4dbba48e07522112e0c86544dd2aaa2479398256fc8"
+    }
+  }
+}

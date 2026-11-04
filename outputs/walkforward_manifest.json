@@ -1,0 +1,18 @@
+{
+  "source": "HISTORICAL BINANCE ZIP DATA",
+  "modeling": "rolling expanding train by observed day; predict next observed day; reset conditional GARCH variance at each day boundary",
+  "n_days": 16,
+  "min_train_days": 5,
+  "evaluation_days": 11,
+  "n_observations": 3163,
+  "limitations": [
+    "Sparse days are not equivalent to a continuous time series",
+    "Only 16 observed days in initial archive: high model uncertainty",
+    "Student-t estimated from fitted residuals, not fully joint maximum likelihood",
+    "Quantile coverage is not sufficient to establish full tail-risk calibration",
+    "No overlapping test day used to refit its own forecast",
+    "Conditional state resets every observed day; no overnight propagation",
+    "Daily dependence and multiple comparisons limit p-value interpretation",
+    "Empirical quantile is a baseline, not multi-step bootstrap simulation"
+  ]
+}

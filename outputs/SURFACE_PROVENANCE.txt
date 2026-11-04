@@ -1,0 +1,2 @@
+BINANCE HISTORICAL DATA
+Exploratory OOS sensitivity, selection-biased minima; reset variance to 1 each evaluation day.

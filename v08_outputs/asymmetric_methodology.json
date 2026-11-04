@@ -1,0 +1,4 @@
+{
+  "experiment": "2024 training subset, frozen parameters, 2025 test",
+  "limitations": "Exploratory one-split experiment; frozen models rather than rolling refit; two-stage innovation t fit; no claim of improved trading returns. Training excerpt is 35000 latest 2024 returns."
+}

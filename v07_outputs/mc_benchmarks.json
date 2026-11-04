@@ -1,0 +1,14 @@
+{
+  "synthetic_black_scholes_call": 12.509681171496162,
+  "synthetic_gaussian_loss_tail": {
+    "analytic_VaR": 0.04652695748081682,
+    "analytic_ES": 0.05330428440691616
+  },
+  "methods": [
+    "iid",
+    "antithetic",
+    "control with independent pilot",
+    "antithetic with independent pilot control"
+  ],
+  "disclaimer": "Synthetic reference experiments; no profits/trades; real market ES backtest is separate"
+}

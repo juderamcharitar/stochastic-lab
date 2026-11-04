@@ -1,0 +1,40 @@
+{
+  "source_path": "C:\\Users\\jkram\\Downloads\\Stochastic_Lab_V0_7_1_Gap_Safe\\v07_outputs\\btc_5m_returns.csv",
+  "source_sha256": "b4bd2f7255326067471740ffd347dff7e420dd4be0a19b1b8021f95bca8b0185",
+  "refit_days": 90,
+  "start_year": 2022,
+  "windows": [
+    60,
+    120,
+    240
+  ],
+  "fit_engine": "robust_optimizer.repair SLSQP constrained multistart",
+  "code_sha256": {
+    "runner": "3c86ed9923ecdd6dd6d2bce8843adb134d5a600b6c7689f606357e8b3c598a76",
+    "repair": "107cf3500986815be1c624be1da5bf99a570981071931f28936d5c723a749e7c",
+    "original": "6ad04afeadbcb2b62e26b64e090786f76e59a58dfd4b253c45e1ce9f58ed8a25"
+  },
+  "status": {
+    "60": {
+      "fits": 34,
+      "daily_rows": 2922,
+      "converged": 34,
+      "daily_sha256": "1a7dffb2ae402abfdb54e4652286956e18b51540f637657d5fb824b1a7eb997a",
+      "fit_sha256": "b6c6609091452f38b95ff4524e84066ff482c2a76304f3f20b624b13f403330f"
+    },
+    "120": {
+      "fits": 34,
+      "daily_rows": 2922,
+      "converged": 34,
+      "daily_sha256": "e432f15c09a3539f8c07b7f318771a1fbb2db33dc3e6946b1caca3b7ccc2211b",
+      "fit_sha256": "32ca7ad9d639b613149bcefc5f24fb47300d2a2aab7fff42aed60217575417d2"
+    },
+    "240": {
+      "fits": 34,
+      "daily_rows": 2922,
+      "converged": 34,
+      "daily_sha256": "39d08225c1272cc30ae99543d46b4bc343bfaf933b7ff0c71ca35b4deb82c21d",
+      "fit_sha256": "eb09ddb795409e74ea7f3c00d4d555bddcd73f35247d83cb856003012d1704ad"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the repository and working paper."
+title: "STOCHASTIC LAB: Beyond Gaussian Risk"
+type: software
+authors:
+  - family-names: Ramcharitar
+    given-names: Jude Kriel
+version: 1.2.0
+date-released: 2026-11-04

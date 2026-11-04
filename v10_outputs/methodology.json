@@ -1,0 +1,67 @@
+{
+  "design": "Frozen calibration on 2021\u20132024, evaluation on complete 2025 UTC days only",
+  "models": [
+    "Gaussian IID",
+    "Student-t IID",
+    "Student-t GARCH",
+    "Student-t GJR-GARCH",
+    "Historical day bootstrap",
+    "Heuristic jump-diffusion"
+  ],
+  "five_minute_steps_per_path": 288,
+  "paths_per_model": 10000,
+  "training_dates": [
+    "2021-01-01 00:05:00+00:00",
+    "2024-12-31 23:55:00+00:00"
+  ],
+  "n_training_returns": 420547,
+  "n_training_complete_days": 1453,
+  "n_holdout_complete_days": 365,
+  "seed": 2026,
+  "model_parameters": {
+    "mean": 2.737115142318813e-06,
+    "std": 0.0020986140874674607,
+    "student_df": 2.6065018538837053,
+    "jump_probability": 0.007689984710389088,
+    "jump_mean_z": 0.06810155270494099,
+    "jump_sd_z": 6.75152606302279,
+    "symmetric": {
+      "mu": 6.531287397352508e-06,
+      "scale": 0.0015592721694541384,
+      "alpha": 0.1214258155537442,
+      "beta": 0.8674816452237804,
+      "gamma": 0.0,
+      "df": 5.306669249871502,
+      "converged": true,
+      "n_fit": 70000,
+      "objective": 0.28061422386451185
+    },
+    "asymmetric": {
+      "mu": 6.531287397352508e-06,
+      "scale": 0.0015592721694541384,
+      "alpha": 0.11306476981401732,
+      "beta": 0.8671349872565043,
+      "gamma": 0.01721590236182777,
+      "df": 5.308938690789663,
+      "converged": true,
+      "n_fit": 70000,
+      "objective": 0.28040527976858054
+    },
+    "fit_dates": [
+      "2021-01-01 00:05:00+00:00",
+      "2024-12-31 23:55:00+00:00"
+    ],
+    "n_training_obs": 420547
+  },
+  "notes": [
+    "Date-based holdout is never used for fitting or choosing models.",
+    "Simulation uses unconditional daily h=1 reset, rather than adaptive 2025 rolling volatility state.",
+    "Historical bootstrap resamples complete training days, retaining within-day dependence only.",
+    "Heuristic jump mixture uses >4 standard-deviation events; not identified jump-diffusion or variance-neutral calibration.",
+    "The 3D risk surface scales GJR simulated returns; it is a scenario sensitivity map, not an empirical robustness landscape.",
+    "Daily VaR coverage has only roughly 365 trials; 1% tail counts are sparse.",
+    "Student-t GARCH variance parameters use Gaussian QMLE followed by separate Student-t df fitting; not full Student-t MLE.",
+    "Return series is based on 5-minute candle returns, not 2025 live or order-level data.",
+    "This is model-risk research, not a prospective trading or calibrated price prediction."
+  ]
+}

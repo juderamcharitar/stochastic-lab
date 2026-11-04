@@ -1,0 +1,6 @@
+{
+  "tests": "Kupiec unconditional coverage; Christoffersen first-order independence and conditional coverage on uninterrupted 5-minute transitions",
+  "pvalue_warning": "Asymptotic tests; dependence, regime variation, forecast estimation, multiple comparisons, and large sample sizes affect interpretation. Rejecting null does not prove economic significance.",
+  "joint_score": "((loss - VaR) * I(loss > VaR) / q + VaR) / ES + log(ES) - 1, with q=.01, positive loss VaR/ES. Compare means only for identical observations and units.",
+  "important": "No causality attribution to economic news; timestamps alone are insufficient. No model refitting in this module."
+}

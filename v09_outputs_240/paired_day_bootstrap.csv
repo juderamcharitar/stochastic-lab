@@ -1,0 +1,2 @@
+train_days,bootstrap_block_days,n_days,n_obs,asymmetric_minus_symmetric_joint_score,ci_low,ci_high,favor
+240,7,1461,420751,-0.006199060539861195,-0.008367896205927297,-0.004347650269366646,asymmetric

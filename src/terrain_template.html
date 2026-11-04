@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>STOCHASTIC LAB | Neon Terrain</title><style>*{box-sizing:border-box}body{background:#03030b;color:#eeeefa;font:14px system-ui,-apple-system,Segoe UI,Arial;margin:0}.shell{max-width:1480px;margin:0 auto;padding:18px}.brand{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;flex-wrap:wrap;margin-bottom:15px}.eyebrow{font-size:11px;color:#a78bfa;font-weight:700;letter-spacing:2px}.brand h1{font-size:24px;letter-spacing:1px;margin:4px 0;font-weight:750}.brand p{color:#9aa2bb;font-size:13px;margin:0}.badge{border:1px solid #6450a3;border-radius:30px;padding:7px 12px;color:#c4b5fd;font-size:11px;letter-spacing:1px}.panel{border:1px solid #24203d;border-radius:16px;background:#070811;overflow:hidden;box-shadow:0 0 40px #100b2e}.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid #22203a}.bar button{border:1px solid #37314d;background:#141428;border-radius:8px;color:#eeeefa;padding:8px 12px;cursor:pointer;font-weight:600}.bar button:hover,.bar button.active{background:#3b1e67;border-color:#b06df8}.bar .divider{flex:1}.bar label{font-size:12px;color:#c0b9d5}.bar input{width:105px}#terrain{display:block;width:100%;height:min(68vw,610px);min-height:380px;touch-action:none;cursor:grab}#terrain:active{cursor:grabbing}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:14px 18px;background:#0b0b19}.bottom strong{color:#f2eaff}input[type=range]{accent-color:#d849f7}.note{font-size:12px;color:#a49ab8;line-height:1.5}.footer{padding:12px 0;color:#8e869b;font-size:12px;line-height:1.7}.dateRow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:7px}.dateRow span{font-weight:700;color:#edb9ff}#dateSlider{width:100%}.legend{display:flex;gap:6px;align-items:center}.ramp{height:12px;width:90px;border-radius:5px;background:linear-gradient(90deg,#162266,#1e55c6,#00c2f5,#5a40d1,#e72ebe,#ffae43)}@media(max-width:650px){.bottom{grid-template-columns:1fr}.brand h1{font-size:19px}#terrain{min-height:310px}.bar{gap:5px}.bar button{padding:8px}}</style></head><body><div class="shell"><div class="brand"><div><div class="eyebrow">PROJECT FOUR / STOCHASTIC LAB</div><h1>NEON TERRAIN <span style="color:#bc65fe">/</span> GARCH ROBUSTNESS</h1><p>Binance BTC/USDT · 12 historical evaluation windows · α × β × Gaussian NLL</p></div><div class="badge" id="status">VISUALLY EXAGGERATED</div></div><div class="panel"><div class="bar"><button id="play">Ⅱ Pause</button><button id="researchMode">Research</button><button class="active" id="cinemaMode">Cinematic</button><button id="spin">Auto-rotate</button><button id="reset">Reset camera</button><div class="divider"></div><label for="exag">Relief <b id="exagValue">3.8×</b></label><input type="range" id="exag" min="1" max="7" value="3.8" step=".2"></div><canvas id="terrain" aria-label="Animated 3D triangulated loss surface, based on historical Binance data"></canvas><div class="bottom"><div><div class="dateRow"><strong>Historical evaluation</strong><span id="date">2026-09-30</span></div><input id="dateSlider" type="range" min="0" max="11000" value="0" step="1"><div class="note">▶ Play/pause · scrub date · drag to rotate · mouse wheel to zoom</div></div><div><div class="dateRow"><strong>Geometry & provenance</strong><span class="legend"><span class="ramp"></span> NLL</span></div><div class="note" id="info">Cinematic vertical relief</div><div class="note">α = shock response; β = volatility persistence. <strong>Lower NLL is better.</strong> Color is tied to original global loss values; a mountainous peak is not necessarily desirable.</div></div></div></div><div class="footer">SCIENTIFIC INTEGRITY — Every vertex is derived from a valid GARCH grid cell in the 16-day Binance study. Invalid α+β regions remain missing. Smooth animation interpolates between real historical frames; intermediate frames are visual transitions, not actual dates. Cinematic mode applies a monotonic vertical transformation and lighting; it does not invent new local extrema. Nonconsecutive historical dates, selected minima, and finite sample size limit the conclusions. This renderer is self-contained and operates offline.</div></div><script>const DATA=__DATA__;
+const cvs=document.getElementById('terrain'); const ctx=cvs.getContext('2d',{alpha:false});
+const app={running:true,mode:'cinematic',frame:0,az:-.69,elev:.62,zoom:1,exaggeration:3.8,drag:false,lastX:0,lastY:0,lastT:0,autospin:false};
+const nA=DATA.alpha.length,nB=DATA.beta.length,F=DATA.frames.length;
+const all=DATA.frames.flat(2).filter(v=>v!==null&&Number.isFinite(v));const bounds=[Math.min(...all),Math.max(...all)];
+const canvasInfo=document.getElementById('info'),dateInfo=document.getElementById('date'),slider=document.getElementById('dateSlider'),modeResearch=document.getElementById('researchMode'),modeCinema=document.getElementById('cinemaMode');
+const status=document.getElementById('status'),exag=document.getElementById('exag'),exagValue=document.getElementById('exagValue');
+slider.max=(F-1)*1000;
+function lerp(a,b,t){return a+(b-a)*t}
+function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+function smooth(x){return x*x*(3-2*x)}
+function getField(i,j){const f0=Math.floor(app.frame)%F; const f1=Math.min(f0+1,F-1),q=smooth(app.frame-f0);const a=DATA.frames[f0][i][j],b=DATA.frames[f1][i][j];return a===null||b===null?null:lerp(a,b,q)}
+function zTransform(z){let range=bounds[1]-bounds[0];let u=(z-bounds[0])/range; if(app.mode==='research')return (u-.5)*1.18;
+// Rank-preserving nonlinear contrast: no extra extrema introduced.
+let x=(u-.5)*2;return Math.sign(x)*Math.pow(Math.abs(x),.72)*app.exaggeration*.48;
+}
+function color(z,lighting,side){let u=clamp((z-bounds[0])/(bounds[1]-bounds[0]),0,1);
+// Palette: sapphire -> electric blue -> violet -> magenta -> gold.
+let colors=[[22,34,102],[30,85,198],[0,194,245],[90,64,209],[231,46,190],[255,174,67]];
+let x=u*(colors.length-1),i=Math.min(colors.length-2,Math.floor(x)),v=x-i;
+let c=colors[i].map((a,k)=>lerp(a,colors[i+1][k],v));
+let l=clamp(lighting*.84 + (side?.15:0),.22,1.36);
+return 'rgb('+c.map(a=>clamp(Math.round(a*l),0,255)).join(',')+')';}
+function resize(){let rect=cvs.getBoundingClientRect();const dpr=Math.min(window.devicePixelRatio||1,2);cvs.width=Math.max(400,Math.round(rect.width*dpr));cvs.height=Math.max(300,Math.round(rect.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0)}
+function projection(x,y,z,w,h){ // yaw then camera elevation and orthographic/isometric projection
+const ca=Math.cos(app.az),sa=Math.sin(app.az),ce=Math.cos(app.elev),se=Math.sin(app.elev);
+const xx=x*ca-y*sa, yy=x*sa+y*ca;
+const X=xx, Y=yy*se-z*ce,depth=yy*ce+z*se;
+const scale=Math.min(w/3.1,h/4.25)*app.zoom;
+return {x:w*.5+X*scale,y:h*.59+Y*scale,d:depth}}
+function normal(p,q,r){let a=[q[0]-p[0],q[1]-p[1],q[2]-p[2]],b=[r[0]-p[0],r[1]-p[1],r[2]-p[2]]; let n=[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]; let l=Math.hypot(...n)||1;return n.map(v=>v/l)}
+function draw(){const w=cvs.clientWidth,h=cvs.clientHeight;ctx.fillStyle='#03030c';ctx.fillRect(0,0,w,h);
+// subtle atmospheric halo
+let bg=ctx.createRadialGradient(w*.52,h*.47,10,w*.52,h*.48,w*.57);bg.addColorStop(0,'rgba(37,18,91,.22)');bg.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+const proj=(x,y,z)=>projection(x,y,z,w,h);
+// ground plane neon wireframe
+ctx.strokeStyle='rgba(239,45,235,.25)';ctx.lineWidth=.75;
+for(let v=-1.45;v<=1.46;v+=.145){let a=proj(v,-1.45,-1.14),b=proj(v,1.45,-1.14),c=proj(-1.45,v,-1.14),d=proj(1.45,v,-1.14);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.moveTo(c.x,c.y);ctx.lineTo(d.x,d.y);ctx.stroke()}
+const field=Array.from({length:nA},(_,i)=>Array.from({length:nB},(_,j)=>getField(i,j)));
+let tiles=[];
+const V=(i,j)=>{let x=-1.05+2.1*j/(nB-1),y=-1.05+2.1*i/(nA-1),v=field[i][j];return [x,y,zTransform(v),v]};
+for(let i=0;i<nA-1;i++)for(let j=0;j<nB-1;j++){
+let v=[V(i,j),V(i+1,j),V(i+1,j+1),V(i,j+1)];if(v.some(p=>p[3]===null))continue;
+for(let idxs of [[0,1,2],[0,2,3]]){let p=idxs.map(k=>v[k]),points=p.map(a=>proj(a[0],a[1],a[2])),N=normal(p[0],p[1],p[2]);const light=[-.42,-.52,.75];let lum=.52+.8*Math.max(0,N[0]*light[0]+N[1]*light[1]+N[2]*light[2]);let mean=p.reduce((s,a)=>s+a[3],0)/3;
+tiles.push({points,depth:points.reduce((s,a)=>s+a.d,0)/3,fill:color(mean,lum,j%2===0),value:mean})}}
+tiles.sort((a,b)=>a.depth-b.depth);
+for(let t of tiles){ctx.beginPath();ctx.moveTo(t.points[0].x,t.points[0].y);ctx.lineTo(t.points[1].x,t.points[1].y);ctx.lineTo(t.points[2].x,t.points[2].y);ctx.closePath();ctx.fillStyle=t.fill;ctx.fill();ctx.strokeStyle=app.mode==='cinematic'?'rgba(8,5,30,.26)':'rgba(10,11,30,.08)';ctx.lineWidth=.45;ctx.stroke()}
+// border edges at ground base
+ctx.lineWidth=.9;ctx.strokeStyle='rgba(245,32,224,.52)';let corners=[[-1.06,-1.06],[-1.06,1.06],[1.06,1.06],[1.06,-1.06]];ctx.beginPath();corners.forEach(([x,y],i)=>{let p=proj(x,y,-1.14);if(!i)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y)});ctx.closePath();ctx.stroke();
+const frameIdx=Math.min(F-1,Math.round(app.frame));dateInfo.textContent=DATA.dates[frameIdx];slider.value=Math.round(app.frame*1000);
+canvasInfo.textContent=app.mode==='research'?'Research: fixed global z-scale · original NLL':'Cinematic: monotonic vertical exaggeration '+app.exaggeration.toFixed(1)+'× · original values preserved';
+}
+function tick(now){let dt=Math.min(.09,(now-(app.lastT||now))/1000);app.lastT=now;if(app.running){app.frame+=dt*.37;if(app.frame>F-1)app.frame=0}if(app.autospin)app.az+=dt*.16;draw();requestAnimationFrame(tick)}
+function setMode(m){app.mode=m;modeResearch.classList.toggle('active',m==='research');modeCinema.classList.toggle('active',m==='cinematic');exag.disabled=m==='research';status.textContent=m==='cinematic'?'VISUALLY EXAGGERATED':'NUMERICALLY SCALED'}
+document.getElementById('play').onclick=()=>{app.running=!app.running;document.getElementById('play').textContent=app.running?'Ⅱ Pause':'▶ Play'};
+document.getElementById('reset').onclick=()=>{app.az=-.69;app.elev=.62;app.zoom=1};
+document.getElementById('spin').onclick=()=>{app.autospin=!app.autospin;document.getElementById('spin').classList.toggle('active',app.autospin)};
+modeResearch.onclick=()=>setMode('research');modeCinema.onclick=()=>setMode('cinematic');
+slider.oninput=e=>{app.frame=Number(e.target.value)/1000;app.running=false;document.getElementById('play').textContent='▶ Play'};
+exag.oninput=e=>{app.exaggeration=Number(e.target.value);exagValue.textContent=app.exaggeration.toFixed(1)+'×'};
+cvs.addEventListener('pointerdown',e=>{app.drag=true;app.lastX=e.clientX;app.lastY=e.clientY;cvs.setPointerCapture(e.pointerId)});
+cvs.addEventListener('pointerup',()=>app.drag=false);
+cvs.addEventListener('pointermove',e=>{if(!app.drag)return;app.az+=(e.clientX-app.lastX)*.007;app.elev=clamp(app.elev+(e.clientY-app.lastY)*.005,.18,1.35);app.lastX=e.clientX;app.lastY=e.clientY});
+cvs.addEventListener('wheel',e=>{e.preventDefault();app.zoom=clamp(app.zoom*Math.exp(-e.deltaY*.001),.5,2.3)},{passive:false});
+window.addEventListener('resize',resize);resize();setMode('cinematic');requestAnimationFrame(tick);
+</script></body></html>
