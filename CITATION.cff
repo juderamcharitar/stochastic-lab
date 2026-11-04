@@ -5,5 +5,6 @@ type: software
 authors:
   - family-names: Ramcharitar
     given-names: Jude Kriel
+    affiliation: Carnegie Mellon University
 version: 1.2.0
 date-released: 2026-11-04
