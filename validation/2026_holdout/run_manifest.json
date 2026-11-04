@@ -1,5 +1,5 @@
 {
-  "source_path": "C:\\Users\\jkram\\Downloads\\Stochastic_Lab_V0_7_1_Gap_Safe\\v07_outputs\\btc_5m_returns.csv",
+  "source_path": "v07_outputs/btc_5m_returns.csv",
   "source_sha256": "66e7a9d11f75a9f1aa11cff078a5a7716eaebad89b8b6291f0aa21f301ac1a0c",
   "refit_days": 90,
   "start_year": 2026,
