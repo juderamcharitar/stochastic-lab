@@ -81,6 +81,8 @@ This is a working research project, not a peer-reviewed publication. It does not
 
 ## Attribution and licensing
 
-**Author: Jude Kriel Ramcharitar.**
+**Sole creator and author: Jude Kriel Ramcharitar.**
+
+Carnegie Mellon University · Independent research.
 
 No open-source license has been selected. Original market data remain subject to their publishers' terms.
