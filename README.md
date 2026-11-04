@@ -81,4 +81,6 @@ This is a working research project, not a peer-reviewed publication. It does not
 
 ## Attribution and licensing
 
-Project associated with **Jude Kriel Ramcharitar**. Final manuscript authorship and any collaborators should be confirmed before formal publication. No open-source license has been selected; the original market data remain subject to their publishers' terms.
+**Author: Jude Kriel Ramcharitar.**
+
+No open-source license has been selected. Original market data remain subject to their publishers' terms.
