@@ -1,6 +1,6 @@
 # STOCHASTIC LAB — Holdout Output Verification
 
-Source: user-uploaded `STOCHASTIC_2026_HOLDOUT_RESULTS.zip`.
+Source: archived `STOCHASTIC_2026_HOLDOUT_RESULTS.zip` produced during the 2026 evaluation.
 
 - Archive contains 7 output files, including daily scores, model refits, bootstrap table, and run manifest.
 - Manifest SHA-256 hashes for `window_120\daily_scores.csv` and `window_120\model_refits.csv` match.
