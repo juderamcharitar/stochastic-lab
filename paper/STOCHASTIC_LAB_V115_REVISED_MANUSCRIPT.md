@@ -201,7 +201,7 @@ py -m src.market_sim_v10 --returns-csv btc_5m_returns.csv --paths 10000
 py -m streamlit run app.py
 ```
 
-For the corrected rolling comparison, use the V1.1.3 runner with historical inputs and the repaired optimizer. The corrected rerun supersedes the earlier V0.9 optimizer-contaminated results. **Reproducing saved calculations is not the same as independently verifying the source market data.** The neon 3D volatility landscape is a separate descriptive visualization, not a rendering of multiyear model superiority.
+For the corrected rolling comparison, use the V1.1.3 runner with historical inputs and the repaired optimizer. Set `--end-year 2025` for the 2022–2025 evaluation when the local return CSV includes later data. The corrected rerun supersedes the earlier V0.9 optimizer-contaminated results. **Reproducing saved calculations is not the same as independently verifying the source market data.** The neon 3D volatility landscape is a separate descriptive visualization, not a rendering of multiyear model superiority.
 
 # References
 
