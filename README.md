@@ -49,10 +49,10 @@ python -m src.multiyear --allow-gaps
 
 The pipeline checks historical coverage and excludes returns that would span missing intervals.
 
-Run the corrected development-period comparison:
+Run the corrected development-period comparison (the end-year cutoff prevents 2026 observations from entering the 2022–2025 evaluation):
 
 ```bash
-python validation/full_refit_runner.py --returns-csv v07_outputs/btc_5m_returns.csv --windows 60,120,240 --start-year 2022 --output-dir clean_outputs
+python validation/full_refit_runner.py --returns-csv v07_outputs/btc_5m_returns.csv --windows 60,120,240 --start-year 2022 --end-year 2025 --output-dir clean_outputs
 ```
 
 Run the separate 2026 comparison using the previously selected 120-observed-day training window and 90-observed-day refit schedule:
