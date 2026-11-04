@@ -8,7 +8,7 @@
 - [x] Identify Jude Kriel Ramcharitar as sole author and project creator
 - [x] Create the public `stochastic-lab` repository and push the initial commit
 - [x] Confirm the public repository and README are accessible
-- [ ] Replace the published manuscript PDF with the corrected PDF containing sole-author attribution and removing editorial notes
+- [x] Replace the published manuscript PDF with the corrected sole-author edition; matching Git blob SHA verified
 - [ ] Verify GitHub Actions completed successfully
 - [ ] Reproduce the full historical experiment independently on another machine
 - [ ] Choose an explicit software license if reuse is intended
